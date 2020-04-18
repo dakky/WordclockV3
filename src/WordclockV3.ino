@@ -8,6 +8,8 @@
 //   - class for easy LED access with fading
 //   - OTA (over the air) updates
 //   - WiFi manager for easy configuration in unknown WiFi networks
+//	 - a telnet server for remote debugging
+//	 - some status LEDs
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

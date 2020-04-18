@@ -257,6 +257,7 @@ void setup()
 	Serial.println("Starting HTTP server");
 	WebServer.begin();
 
+	// telnet for remote debugging
 	telnetServer.begin();
 	telnetServer.setNoDelay(true);
 

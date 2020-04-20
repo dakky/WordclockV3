@@ -113,7 +113,8 @@ const uint32_t PROGMEM LEDFunctionsClass::brightnessCurveSelect[NUM_PIXELS] = {
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0
-	/*		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	/*		
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -123,7 +124,8 @@ const uint32_t PROGMEM LEDFunctionsClass::brightnessCurveSelect[NUM_PIXELS] = {
 	0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
 	0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
-	0, 1, 0, 1*/
+	0, 1, 0, 1
+	*/
 };
 
 const uint32_t PROGMEM LEDFunctionsClass::brightnessCurvesR[256 * NUM_BRIGHTNESS_CURVES] = {
@@ -670,7 +672,7 @@ void LEDFunctionsClass::renderTime(uint8_t *target, int h, int m, int s, int ms)
 	target[4] = 1; // S
 	target[5] = 1; // T
 
-				   // minutes 1...4 for the corners
+	// minutes 1...4 for the corners
 	for (int i = 0; i <= ((m % 5) - 1); i++) target[10 * 11 + i] = 1;
 
 	// iterate over minutes_template

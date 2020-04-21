@@ -461,7 +461,7 @@ void LEDFunctionsClass::setMode(DisplayMode newMode)
 		this->renderTime(buf, this->h, this->m, this->s, this->ms);
 		this->prepareExplosion(buf);
 	}
-
+	
 	this->process();
 }
 
@@ -523,6 +523,8 @@ void LEDFunctionsClass::set(const uint8_t *buf, palette_entry palette[],
 void LEDFunctionsClass::setBuffer(uint8_t *target, const uint8_t *source,
 	palette_entry palette[])
 {
+	Serial.println("DEBUG:1");
+
 	uint32_t mapping, palette_index, curveOffset;
 
 	// cast source to 32 bit pointer to ensure 32 bit aligned access
@@ -533,13 +535,21 @@ void LEDFunctionsClass::setBuffer(uint8_t *target, const uint8_t *source,
 	uint8_t *currentBytes = (uint8_t*)&currentDWord;
 	// this counts bytes from 0...3
 	uint32_t byteCounter = 0;
+		Serial.println("DEBUG:2");
+
 	for (int i = 0; i < NUM_PIXELS; i++)
 	{
 		// get next 4 bytes
 		if (byteCounter == 0) currentDWord = buf[i >> 2];
+			
+			Serial.println("DEBUG:pre currentBytes");
 
 		palette_index = currentBytes[byteCounter];
+			Serial.println("DEBUG: Pre mapping");
+
 		mapping = LEDFunctionsClass::mapping[i] * 3;
+			Serial.println("DEBUG: pre brightnesscurveSelect");
+
 		curveOffset = LEDFunctionsClass::brightnessCurveSelect[i] << 8;
 
 		// select color value using palette and brightness correction curves
@@ -745,6 +755,8 @@ void LEDFunctionsClass::renderHourglass(uint8_t animationStep, bool green)
 
 	// delete red component in palette entry 3 to make this color green
 	if (green) p[3].r = 0;
+	
+	Serial.println("DEBUG: 1");
 
 	if (animationStep >= HOURGLASS_ANIMATION_FRAMES) animationStep = 0;
 	this->set(hourglass_animation[animationStep], p, true);

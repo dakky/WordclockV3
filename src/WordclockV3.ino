@@ -203,8 +203,8 @@ void setup()
 	LED.setMode(DisplayMode::yellowHourglass);
 
 	// WiFi
-  wifi_station_set_hostname("WordClock");
 	Serial.println("Initializing WiFi");
+  	wifi_station_set_hostname("WordClock");
 	WiFiManager wifiManager;
 	wifiManager.setAPCallback(configModeCallback);
 	if (!wifiManager.autoConnect("WordClock"))

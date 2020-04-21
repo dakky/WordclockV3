@@ -319,6 +319,9 @@ void LEDFunctionsClass::begin(int pin)
 //---------------------------------------------------------------------------------------
 void LEDFunctionsClass::process()
 {
+
+	Serial.println("LEDFunctionsClass::process()");
+
 	if (Config.debugMode) return;
 
 	// check time values against boundaries
@@ -440,6 +443,9 @@ void LEDFunctionsClass::setTime(int h, int m, int s, int ms)
 //---------------------------------------------------------------------------------------
 void LEDFunctionsClass::setMode(DisplayMode newMode)
 {
+
+	Serial.println("LEDFunctionsClass::setMode(DisplayMode newMode)");
+
 	uint8_t buf[NUM_PIXELS];
 	DisplayMode previousMode = this->mode;
 	this->mode = newMode;
@@ -500,6 +506,9 @@ void LEDFunctionsClass::set(const uint8_t *buf, palette_entry palette[])
 void LEDFunctionsClass::set(const uint8_t *buf, palette_entry palette[],
 	bool immediately)
 {
+	
+	Serial.println("passing LEDFunctionsClass::set");
+
 	this->setBuffer(this->targetValues, buf, palette);
 
 	if (immediately)
@@ -523,12 +532,23 @@ void LEDFunctionsClass::set(const uint8_t *buf, palette_entry palette[],
 void LEDFunctionsClass::setBuffer(uint8_t *target, const uint8_t *source,
 	palette_entry palette[])
 {
-	Serial.println("DEBUG:1");
 
+	#define ALIGNMENT_VALUE     4u
+	if (((uintptr_t)source % ALIGNMENT_VALUE) == 0)
+	{
+		Serial.println("source is aligned");
+	} else {
+		Serial.println("source is not aligned");
+	}
 	uint32_t mapping, palette_index, curveOffset;
-
 	// cast source to 32 bit pointer to ensure 32 bit aligned access
 	uint32_t *buf = (uint32_t*)source;
+	if (((uintptr_t)buf % ALIGNMENT_VALUE) == 0)
+	{
+		Serial.println("buf is aligned");
+	} else {
+		Serial.println("buf is not aligned");
+	}
 	// this holds the current 4 bytes
 	uint32_t currentDWord;
 	// this is a pointer to the current 4 bytes for access as single bytes
@@ -548,7 +568,7 @@ void LEDFunctionsClass::setBuffer(uint8_t *target, const uint8_t *source,
 		// get next 4 bytes
 		if (byteCounter == 0) currentDWord = buf[i >> 2];
 			
-			Serial.println("DEBUG:pre currentBytes");
+		Serial.println("DEBUG:pre currentBytes");
 
 		palette_index = currentBytes[byteCounter];
 			Serial.println("DEBUG: Pre mapping");
@@ -758,14 +778,15 @@ void LEDFunctionsClass::renderTime(uint8_t *target, int h, int m, int s, int ms)
 //---------------------------------------------------------------------------------------
 void LEDFunctionsClass::renderHourglass(uint8_t animationStep, bool green)
 {
+	
+	Serial.println("passing LEDFunctionsClass::renderHourglass(uint8_t animationStep, bool green)");
+
 	// colors in palette: black, white, yellow
 	palette_entry p[] = { { 0, 0, 0 },{ 255, 255, 255 },{ 255, 255, 0 },{ 255, 255, 0 } };
 
 	// delete red component in palette entry 3 to make this color green
 	if (green) p[3].r = 0;
 	
-	Serial.println("DEBUG: 1");
-
 	if (animationStep >= HOURGLASS_ANIMATION_FRAMES) animationStep = 0;
 	this->set(hourglass_animation[animationStep], p, true);
 }

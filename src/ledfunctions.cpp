@@ -536,6 +536,9 @@ void LEDFunctionsClass::setBuffer(uint8_t *target, const uint8_t *source,
 	// this counts bytes from 0...3
 	uint32_t byteCounter = 0;
 		Serial.println("DEBUG:2");
+		Serial.println(NUM_PIXELS);
+		Serial.println("DEBUG:2.5");
+		Serial.println(sizeof(buf));
 
 	for (int i = 0; i < NUM_PIXELS; i++)
 	{

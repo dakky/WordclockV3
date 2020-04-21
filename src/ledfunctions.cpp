@@ -542,6 +542,9 @@ void LEDFunctionsClass::setBuffer(uint8_t *target, const uint8_t *source,
 
 	for (int i = 0; i < NUM_PIXELS; i++)
 	{
+		Serial.println("DEBUG:pre if");
+		Serial.println(byteCounter);
+		Serial.println(currentDWord);
 		// get next 4 bytes
 		if (byteCounter == 0) currentDWord = buf[i >> 2];
 			
@@ -562,6 +565,8 @@ void LEDFunctionsClass::setBuffer(uint8_t *target, const uint8_t *source,
 
 		byteCounter = (byteCounter + 1) & 0x03;
 	}
+				Serial.println("DEBUG: post if");
+
 }
 
 //---------------------------------------------------------------------------------------

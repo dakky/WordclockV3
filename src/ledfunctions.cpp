@@ -566,7 +566,9 @@ void LEDFunctionsClass::setBuffer(uint8_t *target, const uint8_t *source,
 		Serial.println(byteCounter);
 		Serial.println(currentDWord);
 		// get next 4 bytes
-		if (byteCounter == 0) currentDWord = buf[i >> 2];
+		if (byteCounter == 0){
+		  currentDWord = buf[i >> 2];
+		}
 			
 		Serial.println("DEBUG:pre currentBytes");
 

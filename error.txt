@@ -1,0 +1,58 @@
+Exception (9):
+epc1=0x40201ef1 epc2=0x00000000 epc3=0x00000000 excvaddr=0x40258eb6 depc=0x00000000
+
+>>>stack>>>
+
+ctx: cont
+sp: 3fff0fd0 end: 3fff13e0 offset: 01a0
+3fff
+
+1170:  3ffe8b85 00000000 0031203a 402132b1  
+3fff1180:  3ffefa1c 3fff11e0 feefeffe 3ffefe68  
+3fff1190:  4020f0bc 3ffefd38 3ffe8b83 4020f0c8  
+3fff11a0:  4020f0bc 3ffefd38 3ffe8b83 00000001  
+3fff11b0:  40258eb6 3fff11e0 3ffef884 40201fc0  
+3fff11c0:  00000000 3ffef884 3ffefd38 3ffefe68  
+3fff11d0:  00000000 3ffef884 00000000 40202184  
+3fff11e0:  ff000000 ffffffff 00ffff00 feefeffe  
+3fff11f0:  00000000 0000000c 3ffef884 40203c49  
+3fff1200:  feefeffe feefeffe feefeffe feefeffe  
+3fff1210:  feefeffe feefeffe feefeffe feefeffe  
+3fff1220:  feefeffe feefeffe feefeffe feefeffe  
+3fff1230:  feefeffe feefeffe feefeffe feefeffe  
+3fff1240:  feefeffe feefeffe feefeffe feefeffe  
+3fff1250:  feefeffe feefeffe feefeffe feefeffe  
+3fff1260:  3ffe8b85 00000000 544f000a 402132b1  
+3fff1270:  00008b85 ffffff00 00150020 402132b1  
+3fff1280:  3ffe8d37 3fff1ba4 3ffef884 40203d74  
+3fff1290:  4020f0bc 3ffefd38 3ffe8b83 4020f0c8  
+3fff12a0:  000013d0 00000000 544f000a 402132b1  
+3fff12b0:  000006b8 00000000 656c7564 3ffefe68  
+3fff12c0:  00000072 00000156 00000020 40100b9e  
+3fff12d0:  00000005 40201e2b 00000020 40100b9e  
+3fff12e0:  4020f0bc 00000000 00000005 40100425  
+3fff12f0:  00000005 3ffef884 3fff1bbc 40208e54  
+3fff1300:  00000005 3ffef884 3fff1bbc 40201e40  
+3fff1310:  00000000 3ffef884 3ffefd38 4020155b  
+3fff1320:  00000000 00000000 00000000 00000000  
+3fff1330:  feefeffe feefeffe feefeffe feefeffe  
+3fff1340:  feefeffe feefeffe feefeffe feefeffe  
+3fff1350:  feefeffe feefeffe feefeffe feefeffe  
+3fff1360:  feefeffe feefeffe feefeffe feefeffe  
+3fff1370:  feefeffe feefeffe feefeffe feefeffe  
+3fff1380:  feefeffe feefeffe feefeffe feefeffe  
+3fff1390:  feefeffe feefeffe feefeffe feefeffe  
+3fff13a0:  feefeffe feefeffe feefeffe feefeffe  
+3fff13b0:  feefeffe 00000000 feefeffe feefeffe  
+3fff13c0:  3fffdad0 00000000 3ffefe28 40211748  
+3fff13d0:  feefeffe feefeffe 3ffe8550 40100f51  
+<<<stack<<<
+
+ ets Jan  8 2013,rst cause:2, boot mode:(3,7)
+
+load 0x4010f000, len 1392, room 16 
+tail 0
+chksum 0xd0
+csum 0xd0
+v3d128e5c
+~ld
